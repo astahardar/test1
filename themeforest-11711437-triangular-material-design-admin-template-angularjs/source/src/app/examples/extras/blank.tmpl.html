@@ -1,0 +1,59 @@
+<div class="padded-content-page">
+    <h2>{{::vm.Test.Title}}</h2>
+    < layout="row" layout-xs="column">
+        <div flex layout="column">
+            <md-list>
+                <md-list-item class="md-2-line" ng-repeat="w in ::vm.Test.ParsedText.Sentence.WORDS">
+                    <div flex layout="column">
+                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" subtitle="" title-position="top" state="">
+                        <md-divider></md-divider>
+                        <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
+                            {{::w.Word}}
+                        </div>
+                        <md-divider></md-divider>
+                        </tri-widget>
+                    </div>
+                </md-list-item>
+            </md-list>
+
+        </div>
+        <div flex layout="row">
+        <div flex layout="column">
+            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
+                <md-button md-ripple-size="string" aria-label="clean">
+                    Nafnorð
+                </md-button>
+            </tri-widget>
+        </div>
+        <div flex layout="column">
+            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
+                <md-button aria-label="clean">
+                    Sagnorð
+                </md-button>
+            </tri-widget>
+        </div>
+            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
+                <md-button aria-label="clean">
+                    Lýsingarorð
+                </md-button>
+            </tri-widget>
+            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
+                <md-button aria-label="clean">
+                    Fornafn
+                </md-button>
+            </tri-widget>
+            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
+                <md-button aria-label="clean">
+                    Atviktsorð
+                </md-button>
+            </tri-widget>
+            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
+                <md-button aria-label="clean">
+                    Töluorð
+                </md-button>
+            </tri-widget>
+            </div>
+    </div>
+        </div>
+    </div>
+</div>
