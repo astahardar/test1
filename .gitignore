@@ -4,3 +4,6 @@ themeforest-11711437-triangular-material-design-admin-template-angularjs/source/
 themeforest-11711437-triangular-material-design-admin-template-angularjs/source/node_modules/node-sass
 themeforest-11711437-triangular-material-design-admin-template-angularjs/source/.tmp/*
 .tmp/
+themeforest-11711437-triangular-material-design-admin-template-angularjs/source/.tmp/serve/app/app.css
+themeforest-11711437-triangular-material-design-admin-template-angularjs/source/.tmp/serve/index.html
+themeforest-11711437-triangular-material-design-admin-template-angularjs/source/.tmp/serve/app/triangular.scss
