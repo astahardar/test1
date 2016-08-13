@@ -20547,34 +20547,6 @@ chart-legend ul {
 .seed-list {
   list-style: lower-greek; }
 
-.dashboard-container .layout-margin {
-  margin: 0px; }
-
-.dashboard-container .layout-margin > .widget {
-  margin: 8px; }
-
-.dashboard-fullwidth-chart .chart-container {
-  position: relative;
-  left: -5px;
-  bottom: -5px;
-  width: calc(100% + 10px); }
-
-.dashboard-no-bar-tabs md-tabs-wrapper {
-  display: none; }
-
-.google-chart {
-  height: 100%;
-  width: 100%; }
-
-.tabs-tall md-pagination-wrapper, .tabs-tall md-tabs-canvas {
-  height: 72px; }
-
-.google-example-chart {
-  padding: 24px; }
-
-.chartjs-example-chart {
-  padding: 24px; }
-
 #ui-login {
   overflow: auto; }
   #ui-login.ng-enter {
@@ -20703,6 +20675,34 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
 
 .calendar-color-select md-option {
   text-transform: capitalize; }
+
+.google-example-chart {
+  padding: 24px; }
+
+.chartjs-example-chart {
+  padding: 24px; }
+
+.dashboard-container .layout-margin {
+  margin: 0px; }
+
+.dashboard-container .layout-margin > .widget {
+  margin: 8px; }
+
+.dashboard-fullwidth-chart .chart-container {
+  position: relative;
+  left: -5px;
+  bottom: -5px;
+  width: calc(100% + 10px); }
+
+.dashboard-no-bar-tabs md-tabs-wrapper {
+  display: none; }
+
+.google-chart {
+  height: 100%;
+  width: 100%; }
+
+.tabs-tall md-pagination-wrapper, .tabs-tall md-tabs-canvas {
+  height: 72px; }
 
 .elements-button-examples md-card-content {
   min-height: 100px; }
@@ -20901,25 +20901,6 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
 
-.github-user-dropdown img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-sizing: content-box; }
-
-.github-user-dropdown span {
-  margin-left: 16px; }
-
-.md-select-form {
-  display: inline-block;
-  margin-top: 2px;
-  width: 100%; }
-  .md-select-form span {
-    width: 100%; }
-
-.tri-wizard-card md-card-content {
-  padding: 0px; }
-
 .extras-gallery-container {
   height: 100%; }
 
@@ -21036,6 +21017,25 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
       -webkit-transform: rotate(90deg) translateX(0%) !important;
               transform: rotate(90deg) translateX(0%) !important; } }
 
+.md-select-form {
+  display: inline-block;
+  margin-top: 2px;
+  width: 100%; }
+  .md-select-form span {
+    width: 100%; }
+
+.tri-wizard-card md-card-content {
+  padding: 0px; }
+
+.github-user-dropdown img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: content-box; }
+
+.github-user-dropdown span {
+  margin-left: 16px; }
+
 .maps-example .angular-google-map-container {
   height: 550px; }
 
@@ -21049,35 +21049,6 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
     bottom: 0px;
     right: 0px;
     left: 0px; }
-
-.triangular-loader {
-  background: #fff; }
-
-.app-loader md-progress-linear {
-  width: 80%; }
-
-.triangular-toolbar.ng-enter {
-  -webkit-transition: .5s;
-  transition: .5s; }
-
-.triangular-toolbar.ng-enter {
-  -webkit-animation-name: slideInDown;
-  animation-name: slideInDown;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-animation-timing-function: ease;
-  animation-timing-function: ease;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
-
-.triangular-toolbar.ng-leave {
-  display: none; }
 
 .todo-container .slide.ng-enter {
   -webkit-animation-name: slideInRight;
@@ -21196,6 +21167,61 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
   border-radius: 50%;
   z-index: 5; }
 
+.triangular-loader {
+  background: #fff; }
+
+.app-loader md-progress-linear {
+  width: 80%; }
+
+.triangular-toolbar.ng-enter {
+  -webkit-transition: .5s;
+  transition: .5s; }
+
+.triangular-toolbar.ng-enter {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.triangular-toolbar.ng-leave {
+  display: none; }
+
+.login-frame md-card {
+  max-width: 400px; }
+
+.login-frame md-checkbox {
+  margin: 0; }
+
+.login-frame img {
+  display: inline-block;
+  width: auto;
+  max-height: 100px !important;
+  height: initial !important; }
+
+.login-frame md-content {
+  -ms-flex-negative: 0;
+      flex-shrink: 0; }
+
+.login-frame md-toolbar {
+  min-height: 180px;
+  display: block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+              -ms-grid-row-align: center;
+          align-items: center; }
+  .login-frame md-toolbar .md-headline {
+    margin: 0; }
+
 .sales-dashboard .status {
   padding: 8px 14px;
   border-radius: 6px;
@@ -21234,32 +21260,6 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
     border: none; }
   .order-dialog .md-icon-button, .order-dialog md-dialog-actions {
     display: none; } }
-
-.login-frame md-card {
-  max-width: 400px; }
-
-.login-frame md-checkbox {
-  margin: 0; }
-
-.login-frame img {
-  display: inline-block;
-  width: auto;
-  max-height: 100px !important;
-  height: initial !important; }
-
-.login-frame md-content {
-  -ms-flex-negative: 0;
-      flex-shrink: 0; }
-
-.login-frame md-toolbar {
-  min-height: 180px;
-  display: block;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-              -ms-grid-row-align: center;
-          align-items: center; }
-  .login-frame md-toolbar .md-headline {
-    margin: 0; }
 
 .elements-image-table-example .thumb-cell {
   max-width: 104px;

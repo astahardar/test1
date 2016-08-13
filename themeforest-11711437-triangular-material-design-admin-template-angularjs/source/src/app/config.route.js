@@ -42,12 +42,25 @@
                     controllerAs: 'vm'
                 }
             }
+        })
+
+        .state('test', {
+            url: '/test',
+            views:  {
+                'root': {
+                    templateUrl: 'app/test.tmpl.html',
+                    controller: 'TestController',
+                    controllerAs: 'vm'
+                }
+            }
         });
 
 
         // set default routes when no path specified
         $urlRouterProvider.when('', '/dashboards/overview');
         $urlRouterProvider.when('/', '/dashboards/overview');
+        $urlRouterProvider.when('/test', '/test');
+
 
         // always goto 404 if route not found
         $urlRouterProvider.otherwise('/404');
