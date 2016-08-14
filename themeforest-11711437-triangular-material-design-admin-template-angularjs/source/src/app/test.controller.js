@@ -16,6 +16,32 @@
         vm.AnswerData = [];
         vm.IsDone = false;
 
+        vm.WordCatagories = [{
+            Title : 'Nafnorð',
+            Code :  'n'
+        },{
+            Title : 'Lýsingarorð',
+            Code :  'l'
+        },{
+            Title : 'Fornafn',
+            Code :  'f'
+        },{
+            Title : 'Greinir',
+            Code :  'g'
+        },{
+            Title : 'Töluorð',
+            Code :  't'
+        },{
+            Title : 'Sagnorð',
+            Code :  's'
+        },{
+            Title : 'Atviksorð/Forsetning',
+            Code :  'a'
+        },{
+            Title : 'Samtengingarorð',
+            Code :  's'
+        }];
+
         //get Test with id
         vm.Test = {
             Id : '1',

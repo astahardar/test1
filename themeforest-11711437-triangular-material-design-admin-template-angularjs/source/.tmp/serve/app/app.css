@@ -20517,6 +20517,23 @@ chart-legend ul {
       min-width: 260px;
       max-width: 260px; }
 
+.words {
+  font-size: 2em;
+  text-align: center; }
+
+.selected {
+  background-color: #ff0000 !important; }
+
+.currentWord {
+  border-bottom: 1px dotted;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-right: 10px; }
+
+.otherWord {
+  margin-right: 10px;
+  color: #c8c8c8; }
+
 /* view change animation */
 .triangular-content.ng-enter, .triangular-content.ng-leave {
   position: absolute;
@@ -20676,12 +20693,6 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
 .calendar-color-select md-option {
   text-transform: capitalize; }
 
-.google-example-chart {
-  padding: 24px; }
-
-.chartjs-example-chart {
-  padding: 24px; }
-
 .dashboard-container .layout-margin {
   margin: 0px; }
 
@@ -20703,6 +20714,12 @@ md-select[md-container-class="calendar-color-select"] md-select-value span {
 
 .tabs-tall md-pagination-wrapper, .tabs-tall md-tabs-canvas {
   height: 72px; }
+
+.google-example-chart {
+  padding: 24px; }
+
+.chartjs-example-chart {
+  padding: 24px; }
 
 .elements-button-examples md-card-content {
   min-height: 100px; }
