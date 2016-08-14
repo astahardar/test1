@@ -18,12 +18,12 @@
             <div layout="row" layout-xs="column">
                 <div flex layout="column">
                     <md-list>
-                        <md-list-item class="md-2-line" ng-repeat="verk in ::vm.Verkefni">
-                            <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" title= {{::verk.title}} subtitle="" title-position="top" state="">
+                        <md-list-item class="md-2-line" ng-repeat="p in ::vm.Project">
+                            <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" title= {{::p.title}} subtitle="" title-position="top" state="">
                                 <md-divider></md-divider>
                                 <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
 
-                                    <a href="#/test">Taka próf</a>
+                                    <a ng-href="#/test/{{::p.id}}">Taka próf</a>
                                 </div>
                                 <md-divider></md-divider>
                             </tri-widget>

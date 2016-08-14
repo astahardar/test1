@@ -8,7 +8,7 @@
     /* @ngInject */
     function DashboardOverviewController() {
         var vm = this;
-        vm.Verkefni = [{
+        vm.Project = [{
             id: '1',
             title: 'Setningarfræði 101',
             word: 'Hjólabátur'

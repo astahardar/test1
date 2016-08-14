@@ -45,7 +45,7 @@
         })
 
         .state('test', {
-            url: '/test',
+            url: '/test/:id',
             views:  {
                 'root': {
                     templateUrl: 'app/test.tmpl.html',
@@ -60,6 +60,8 @@
         $urlRouterProvider.when('', '/dashboards/overview');
         $urlRouterProvider.when('/', '/dashboards/overview');
         $urlRouterProvider.when('/test', '/test');
+        $urlRouterProvider.when('/test/*', '/test');
+
 
 
         // always goto 404 if route not found

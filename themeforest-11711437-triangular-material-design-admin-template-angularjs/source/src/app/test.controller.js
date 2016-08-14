@@ -3,10 +3,10 @@
 
     angular
         .module('app')
-        .controller('TestController', TestController);
+        .controller('TestController', TestController, '$stateParams');
 
     /* @ngInject */
-    function TestController() {
+    function TestController($log, $stateParams) {
         var vm = this;
         vm.Test = {
             Title : 'Title',
@@ -15,18 +15,26 @@
                     WORDS:[{
                         Word: 'Hjólabáturinn',
                         Class: 'v',
-                        Selected: 'n'
+                        Answer: ''
                     }, {
                         Word: 'er',
                         Class: 'a',
-                        Selected: ''
+                        Answer: ''
                     }, {
                         Word: 'gulur',
                         Class: 'l',
-                        Selected: ''
+                        Answer: ''
                     }]
                 }
             }
+        };
+
+        vm.Answers = [];
+        vm.svar = '';
+        $log.log($stateParams.id);
+        vm.ProcessForms = function(place,value) {
+            vm.Answers[place]= value;
+            $log.log(vm.Answers);
         };
     }
 })();
