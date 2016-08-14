@@ -12,18 +12,18 @@
     <md-tab>
         <md-tab-label layout="column">
             <span class="display-block">Opin Verkefni</span>
-            <span class="display-block">{{::vm.Verkefni.length}}</span>
+            <span class="display-block">{{::vm.Projects.length}}</span>
         </md-tab-label>
         <md-tab-body>
             <div layout="row" layout-xs="column">
                 <div flex layout="column">
                     <md-list>
-                        <md-list-item class="md-2-line" ng-repeat="p in ::vm.Project">
-                            <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" title= {{::p.title}} subtitle="" title-position="top" state="">
+                        <md-list-item class="md-2-line" ng-repeat="p in ::vm.Projects">
+                            <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" title= {{::p.Title}} subtitle="" title-position="top" state="">
                                 <md-divider></md-divider>
                                 <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
 
-                                    <a ng-href="#/test/{{::p.id}}">Taka próf</a>
+                                    <a ng-href="#/test/{{::p.Id}}">Taka próf</a>
                                 </div>
                                 <md-divider></md-divider>
                             </tri-widget>

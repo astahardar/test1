@@ -8,15 +8,44 @@
     /* @ngInject */
     function DashboardOverviewController() {
         var vm = this;
-        vm.Project = [{
-            id: '1',
-            title: 'Setningarfræði 101',
-            word: 'Hjólabátur'
+        vm.Projects = [{
+            Id: '1',
+            Title: 'Málfræði 1',
+            Creator: 'Kennari Kennarason',
+            ParsedText: {
+                Sentence: {
+                    WORDS: [{
+                        Word: 'Hjólabáturinn',
+                        Class: 'n'
+                    }, {
+                        Word: 'er',
+                        Class: 's'
+                    }, {
+                        Word: 'gulur',
+                        Class: 'l'
+                    }]
+                }
+            }
 
-        },{
-            id: '2',
-            title: 'Málfræði 101',
-            word: 'Gulur'
+        }, {
+            Id: '2',
+            Title: 'Málfræði 2',
+            Creator: 'Kennari Kennaradóttir',
+            ParsedText: {
+                Sentence: {
+                    WORDS: [{
+                        Word: 'Panda',
+                        Class: 'n'
+                    }, {
+                        Word: 'er',
+                        Class: 's'
+                    }, {
+                        Word: 'löt',
+                        Class: 'l'
+                    }]
+                }
+            }
+
         }];
     }
 })();

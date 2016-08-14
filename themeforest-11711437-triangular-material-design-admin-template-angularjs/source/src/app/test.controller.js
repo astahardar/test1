@@ -9,47 +9,73 @@
     function TestController($log, $stateParams) {
         var vm = this;
 
+        $log.log($stateParams.id);
+
         vm.WordIndex = 0;
         vm.Answer = Answer;
         vm.AnswerData = [];
         vm.IsDone = false;
 
+        //get Test with id
         vm.Test = {
+            Id : '1',
             Title : 'Title',
             ParsedText :{
                 Sentence:{
                     WORDS:[{
                         Word: 'Hjólabáturinn',
-                        Class: 'v',
-                        Answer: ''
+                        Class: 'n'
                     }, {
                         Word: 'er',
-                        Class: 'a',
-                        Answer: ''
+                        Class: 's'
                     }, {
                         Word: 'gulur',
-                        Class: 'l',
-                        Answer: ''
+                        Class: 'l'
                     }]
                 }
             }
         };
 
+        vm.Results = {
+            ApplcationName: '',
+            StutendId : '',
+            ApplicationId: vm.Test.Id,
+            LevelName : vm.Test.Title,
+            Answers : [],
+            Score : 0
+
+        };
+
         vm.Words = vm.Test.ParsedText.Sentence.WORDS;
 
-        function Answer(wordIndex, answerID)
-        {
-          if(!vm.IsDone)
-          {
-              vm.AnswerData[wordIndex] = answerID;
-              $log.log(vm.Words[wordIndex].Word + " answered with : " + answerID);
-              vm.WordIndex++;
+        function Answer(wordIndex, answerID) {
+            if(!vm.IsDone) {
+                vm.AnswerData[wordIndex] = answerID;
+                vm.Results.Answers = vm.AnswerData;
+                $log.log(vm.Words[wordIndex].Word + ' answered with : ' + answerID);
+                vm.WordIndex++;
+                $log.log(vm.Results);
 
-              if(vm.WordIndex > vm.Words.length-1)
-              {
-                  vm.IsDone = true;
-              }
-          }
+                if(vm.WordIndex > vm.Words.length-1) {
+                    vm.IsDone = true;
+                    CalculateAnswers(vm.AnswerData);
+                    //Send Results
+
+                }
+            }
+        }
+
+        function CalculateAnswers(Answers) {
+            var counter = 0;
+            for (var i = 0; i < vm.Words.length; i++) {
+                $log.log(vm.Words[i].Word + '    ' + Answers[i]);
+                if(vm.Words[i].Class == Answers[i]) {
+                    counter = counter + 1;
+                    $log.log('correct');
+                }
+            }
+            vm.Results.Score = counter;
+            $log.log(vm.Results.Score);
         }
     }
 })();
