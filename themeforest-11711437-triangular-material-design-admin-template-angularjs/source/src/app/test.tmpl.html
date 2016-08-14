@@ -1,73 +1,30 @@
-<div class="padded-content-page">
-    <h2>{{::vm.Test.Title}}</h2>
-    <div layout="row" layout-xs="column">
-    <div flex layout="column">
-        <md-list>
-            <md-list-item class="md-2-line" ng-repeat="w in ::vm.Test.ParsedText.Sentence.WORDS">
-                <div flex layout="column">
-                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" subtitle="" title-position="top" state="">
-                        <md-divider></md-divider>
-                        <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
-                            {{::w.Word}}
-                        </div>
-                        <md-divider></md-divider>
-                    </tri-widget>
+<div flex layout="column">
+    <md-card>
+        <md-card-content class="overflow-auto">
+          <div flex layout="column">
+              <div flex layout="row" layout-align="center">
+                <div class="md-padding word md-margin" flex ng-repeat="w in ::vm.Words" ng-class="{'selected': vm.WordIndex == $index, 'not-selected': vm.WordIndex != $index}" palette-background="blue:100">
+                    {{::w.Word}}
                 </div>
-            </md-list-item>
-        </md-list>
-
-        <md-list>
-            <md-list-item class="md-2-line" ng-repeat="a in ::vm.Answers">
-                <div flex layout="column">
-                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" title-position="top">
-                        <md-divider></md-divider>
-                        <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
-                            {{::a}}
-                        </div>
-                        <md-divider></md-divider>
-                    </tri-widget>
-                </div>
-            </md-list-item>
-        </md-list>
-    </div>
-        <div flex layout="row">
-            <div flex layout="column" data-ng-controller="TestController">
-                <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
-                    <md-button md-ripple-size="string" aria-label="clean" ng-click="vm.ProcessForms(0,'n')">
-                    Nafnorð
-                </md-button>
-                </tri-widget>
-            </div>
-            <div flex layout="column">
-                <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
-                    <md-button aria-label="clean" ng-click="vm.ProcessForms(1,'s')">
-                        Sagnorð
-                    </md-button>
-                </tri-widget>
-            </div>
-            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
-                <md-button aria-label="clean" ng-click="vm.ProcessForms(3,'l')">
-                    Lýsingarorð
-                </md-button>
-            </tri-widget>
-            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
-                <md-button aria-label="clean"  ng-click="vm.ProcessForms(2,'f')">
-                    Fornafn
-                </md-button>
-            </tri-widget>
-            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
-                <md-button aria-label="clean"  ng-click="vm.ProcessForms(5,'a')">
-                    Atviktsorð
-                </md-button>
-            </tri-widget>
-            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="space-between">
-                <md-button aria-label="clean"  ng-click="vm.ProcessForms(0,'t')">
-                    Töluorð
-                </md-button>
-            </tri-widget>
-        </div>
-
-</div>
-</div>
-</div>
+              </div>
+          </div>
+          <div flex layout="row" ng-class="{'someIndication': vm.IsDone == true}">
+              <div flex layout="column">
+                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'a')" ng-disabled="vm.IsDone">Atviksorð</md-button>
+              </div>
+              <div flex layout="column">
+                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'f')" ng-disabled="vm.IsDone">Fornafn</md-button>
+              </div>
+              <div flex layout="column">
+                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'l')" ng-disabled="vm.IsDone">Lýsingarorð</md-button>
+              </div>
+              <div flex layout="column">
+                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'n')" ng-disabled="vm.IsDone">Nafnorð</md-button>
+              </div>
+              <div flex layout="column">
+                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 's')" ng-disabled="vm.IsDone">Sagnorð</md-button>
+              </div>
+          </div>
+        </md-card-content>
+    </md-card>
 </div>
