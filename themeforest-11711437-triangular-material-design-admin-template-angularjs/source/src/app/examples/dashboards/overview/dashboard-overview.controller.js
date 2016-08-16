@@ -12,6 +12,10 @@
             Id: '1',
             Title: 'Málfræði 1',
             Creator: 'Kennari Kennarason',
+            Open: {
+                From : '10/8/2016',
+                Till : '17/8/2016'
+            },
             ParsedText: {
                 Sentence: {
                     WORDS: [{
@@ -31,6 +35,10 @@
             Id: '2',
             Title: 'Málfræði 2',
             Creator: 'Kennari Kennaradóttir',
+            Open: {
+                From : '14/8/2016',
+                Till : '21/8/2016'
+            },
             ParsedText: {
                 Sentence: {
                     WORDS: [{

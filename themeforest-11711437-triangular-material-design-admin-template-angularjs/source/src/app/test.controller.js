@@ -41,11 +41,11 @@
             Code :  's',
             Color : 'cyan'
         },{
-            Title : 'Atviksorð/Forsetning',
+            Title : 'Atviksorð',
             Code :  'a',
             Color : 'green'
         },{
-            Title : 'Samtengingarorð',
+            Title : 'Samtenging',
             Code :  's',
             Color : 'lime'
         }];

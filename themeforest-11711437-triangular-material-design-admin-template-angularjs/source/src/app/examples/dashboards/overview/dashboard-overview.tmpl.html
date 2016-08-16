@@ -1,6 +1,6 @@
 <div class="dashboard-social-header padding-20 padding-top-100 overlay-gradient-30" layout="row" layout-align="start center" style="background: url(assets/images/backgrounds/material-backgrounds/mb-bg-02.jpg) no-repeat; background-size: cover;">
     <div class="margin-right-20">
-        <img src="assets/images/avatars/avatar-5.png" alt="girl-avatar" class="make-round" width="100"/>
+        <img src="assets/images/avatars/avatar-2.png" alt="girl-avatar" class="make-round" width="100"/>
     </div>
     <div class="text-light">
         <h3 class="font-weight-600 margin-bottom-0 text-light">Nemandi</h3>
@@ -18,11 +18,10 @@
             <div layout="row" layout-xs="column">
                 <div flex layout="column">
                     <md-list>
-                        <md-list-item class="md-2-line" ng-repeat="p in ::vm.Projects">
-                            <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-2.png" title= {{::p.Title}} subtitle="" title-position="top" state="">
-                                <md-divider></md-divider>
+                        <md-list-item ng-repeat="p in ::vm.Projects">
+                            <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-5.png" title= {{::p.Title}} subtitle= "{{::p.Open.From}} - {{::p.Open.Till}}" title-position="top">
                                 <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
-
+                                    <p>Kennari: {{::p.Creator}}</p>
                                     <a ng-href="#/test/{{::p.Id}}">Taka próf</a>
                                 </div>
                                 <md-divider></md-divider>
