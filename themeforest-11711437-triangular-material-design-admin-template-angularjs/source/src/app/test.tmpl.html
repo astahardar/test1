@@ -9,20 +9,8 @@
               </div>
           </div>
           <div flex layout="row" ng-class="{'someIndication': vm.IsDone == true}">
-              <div flex layout="column">
-                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'a')" ng-disabled="vm.IsDone">Atviksorð</md-button>
-              </div>
-              <div flex layout="column">
-                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'f')" ng-disabled="vm.IsDone">Fornafn</md-button>
-              </div>
-              <div flex layout="column">
-                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'l')" ng-disabled="vm.IsDone">Lýsingarorð</md-button>
-              </div>
-              <div flex layout="column">
-                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 'n')" ng-disabled="vm.IsDone">Nafnorð</md-button>
-              </div>
-              <div flex layout="column">
-                  <md-button class="md-padding md-margin md-raised" palette-background="red:100" ng-click="vm.Answer(vm.WordIndex, 's')" ng-disabled="vm.IsDone">Sagnorð</md-button>
+              <div flex layout="column" ng-repeat="c in ::vm.WordCatagories | orderBy: 'Title'">
+                  <md-button class="md-padding md-margin md-raised" palette-background="{{::c.Color}}:100" ng-click="vm.Answer(vm.WordIndex, c.Code)" ng-disabled="vm.IsDone">{{::c.Title}}</md-button>
               </div>
           </div>
         </md-card-content>

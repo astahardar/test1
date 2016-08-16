@@ -18,28 +18,36 @@
 
         vm.WordCatagories = [{
             Title : 'Nafnorð',
-            Code :  'n'
+            Code :  'n',
+            Color : 'pink'
         },{
             Title : 'Lýsingarorð',
-            Code :  'l'
+            Code :  'l',
+            Color : 'red'
         },{
             Title : 'Fornafn',
-            Code :  'f'
+            Code :  'f',
+            Color : 'purple'
         },{
             Title : 'Greinir',
-            Code :  'g'
+            Code :  'g',
+            Color : 'indigo'
         },{
             Title : 'Töluorð',
-            Code :  't'
+            Code :  't',
+            Color : 'blue'
         },{
             Title : 'Sagnorð',
-            Code :  's'
+            Code :  's',
+            Color : 'cyan'
         },{
             Title : 'Atviksorð/Forsetning',
-            Code :  'a'
+            Code :  'a',
+            Color : 'green'
         },{
             Title : 'Samtengingarorð',
-            Code :  's'
+            Code :  's',
+            Color : 'lime'
         }];
 
         //get Test with id
