@@ -1,10 +1,10 @@
-<div flex layout="column" palette-background="black:50">
-    <md-card palette-background="black:50">
+<div flex layout="column" id="Main">
+    <md-card id="MainCard" layout-align="center">
         <md-card-content class="overflow-auto">
           <div flex layout="column">
               <div flex layout="row" layout-align="center">
                 <p class="md-padding words md-margin" flex>
-                  <span ng-repeat="w in ::vm.Words" ng-class="{'currentWord': vm.WordIndex == $index, 'otherWord': vm.WordIndex != $index}" palette-background="blue:10">{{::w.Word}}</span>
+                  <span ng-repeat="w in ::vm.Words" ng-class="{'currentWord': vm.WordIndex == $index, 'otherWord': vm.WordIndex != $index}"><span ng-style="vm.GetColorForAnswer($index)">{{::w.Word}}</span></span>
                 </p>
               </div>
           </div>

@@ -6,12 +6,14 @@
         .controller('TestController', TestController, '$stateParams');
 
     /* @ngInject */
-    function TestController($log, $stateParams) {
+    function TestController($log, $stateParams, $filter) {
         var vm = this;
 
         $log.log($stateParams.id);
 
         vm.WordIndex = 0;
+        vm.GetColorForAnswer = GetColorForAnswer;
+        vm.itemStyle = itemStyle;
         vm.Answer = Answer;
         vm.AnswerData = [];
         vm.IsDone = false;
@@ -97,6 +99,44 @@
 
                 }
             }
+        }
+
+        function GetColorForAnswer(wordIndex)
+        {
+            //$log.log("WordIndex:" + wordIndex);
+            var colorClass = vm.AnswerData[wordIndex];
+            if(colorClass != undefined)
+            {
+                $log.log("Color class to search for:" + colorClass);
+                var found = $filter('filter')(vm.WordCatagories, {Code: colorClass}, true);
+                if(found.length > 0)
+                {
+                    $log.log("Length:" + found.length);
+                    $log.log("Found:" + found[0].Color);
+
+                    return {'color': found[0].Color};
+                }
+            }
+/*
+            if(colorClass != undefined)
+            {
+              var found = $filter('filter')(vm.WordCatagories, {Code: colorClass}, false);
+              $log.log(found.length);
+              return found.Color;
+            }
+            else
+            {
+              $log.log("Noting");
+              return "nothing";
+            }*/
+
+        }
+
+        function itemStyle(palette) {
+            return {
+                'background-color': triTheming.rgba(palette.value),
+                'color': triTheming.rgba(palette.contrast)
+            };
         }
 
         function CalculateAnswers(Answers) {
