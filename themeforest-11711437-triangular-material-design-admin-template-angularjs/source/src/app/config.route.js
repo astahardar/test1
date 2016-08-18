@@ -52,6 +52,12 @@
                     controller: 'TestController',
                     controllerAs: 'vm'
                 }
+            },
+            data: {
+                layout: {
+                    sideMenuSize: 'hidden',
+                    showToolbar: true
+                }
             }
         });
 

@@ -54,6 +54,29 @@
                 }
             }
 
+        }, {
+            Id: '3',
+            Title: 'Málfræði 3',
+            Creator: 'Kennari Kennaradóttir',
+            Open: {
+                From : '18/8/2016',
+                Till : '28/8/2016'
+            },
+            ParsedText: {
+                Sentence: {
+                    WORDS: [{
+                        Word: 'Sólin',
+                        Class: 'n'
+                    }, {
+                        Word: 'er',
+                        Class: 's'
+                    }, {
+                        Word: 'rauð',
+                        Class: 'l'
+                    }]
+                }
+            }
+
         }];
     }
 })();
