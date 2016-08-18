@@ -1,3 +1,13 @@
+#Main {
+  background-color: #333333;
+}
+
+#MainCard {
+  background-color: #aaaaaa;
+  min-width: 400px;
+  max-width: 960px !important;
+}
+
 .words {
   font-size: 3.5em;
   text-align:center;
@@ -19,4 +29,8 @@
   margin-right: 10px;
   color: rgb(100,100,100);
   transition: all 0.3s ease-in;
+}
+
+.pink {
+  color: rgb(230,230,0);
 }
