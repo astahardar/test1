@@ -1,0 +1,24 @@
+<div layout="column" id="Main" layout-align="center">
+    <md-card id="MainCard" layout-align="center">
+        <md-card-content class="overflow-auto">
+          <div  layout="column" layout-align="center">
+              <div  layout="row" layout-xs="column" flex layout-align="center">
+                <p class="md-padding words md-margin" flex>
+                  <span ng-repeat="w in ::vm.Words" ng-class="{'currentWord': vm.WordIndex == $index, 'otherWord': vm.WordIndex != $index}"><span ng-style="vm.GetColorForAnswer($index)">{{::w.Word}}</span></span>
+                </p>
+              </div>
+          </div>
+          <div flex layout="row" layout-xs="column" ng-class="{'someIndication': vm.IsDone == true}">
+              <div flex layout="column" ng-repeat="c in ::vm.WordCatagories | orderBy: 'Title'">
+                  <md-button class="md-padding md-margin md-raised" palette-background="{{::c.Color}}:100" ng-click="vm.Answer(vm.WordIndex, c.Code)" ng-disabled="vm.IsDone">{{::c.Title}}</md-button>
+              </div>
+          </div>
+
+            <div flex layout="row" ng-hide="!vm.IsDone" layout-align="center">
+                <p>Þú fékkst {{vm. Results.Score}} / {{vm.Results.Answers.length}} rétt</p>
+                <md-button class="md-padding md-margin md-raised" palette-background="{{::c.Color}}:100" ng-click="vm.TakeAgain()">Taka Aftur</md-button>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>
+

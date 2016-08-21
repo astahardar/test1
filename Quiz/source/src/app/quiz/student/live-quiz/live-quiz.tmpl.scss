@@ -1,0 +1,38 @@
+#Main {
+  background-color: #333333;
+  layout-align:center;
+}
+
+#MainCard {
+  background-color: #aaaaaa;
+  //min-width: 400px;
+  //max-width: 960px !important;
+  layout-align:center;
+}
+
+.words {
+  font-size: 3.5em;
+  text-align:center;
+}
+
+.selected {
+  background-color: #ff0000 !important;
+}
+
+.currentWord {
+    border-bottom:1px dotted;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.otherWord {
+  margin-right: 10px;
+  color: rgb(100,100,100);
+  transition: all 0.3s ease-in;
+}
+
+.pink {
+  color: rgb(230,230,0);
+}

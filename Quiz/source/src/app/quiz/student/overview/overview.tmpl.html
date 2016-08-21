@@ -1,0 +1,31 @@
+<div class="dashboard-social-header padding-20 padding-top-100 overlay-gradient-30" layout="row" layout-align="start center" style="background: url(assets/images/backgrounds/material-backgrounds/mb-bg-02.jpg) no-repeat; background-size: cover;">
+    <div class="margin-right-20">
+        <img src="assets/images/avatars/avatar-2.png" alt="girl-avatar" class="make-round" width="100"/>
+    </div>
+    <div class="text-light">
+        <h3 class="font-weight-600 margin-bottom-0 text-light">Nemandi</h3>
+        <p class="font-weight-300 margin-top-0 margin-bottom-0">6.RF</p>
+        <p class="margin-top-0"><md-icon md-font-icon="zmdi zmdi-pin color-inherit"></md-icon> Flataskóli</p>
+    </div>
+</div>
+<md-tabs md-dynamic-height md-border-bottom class="tabs-tall">
+    <md-tab>
+        <md-tab-label layout="column">
+            <span class="display-block">Opin Verkefni</span>
+            <span class="display-block">{{::vm.Projects.length}}</span>
+        </md-tab-label>
+        <md-tab-body>
+            <div layout="row" layout-xs="column">
+                <md-list-item ng-repeat="p in ::vm.Projects">
+                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-5.png" title= {{::p.Title}} subtitle= "{{::p.Open.From}} - {{::p.Open.Till}}" title-position="top">
+                        <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
+                            <p>Kennari: {{::p.Creator}}</p>
+                            <a ng-href="#/quizes/quiz/{{::p.Id}}">Taka próf</a>
+                        </div>
+                        <md-divider></md-divider>
+                    </tri-widget>
+                </md-list-item>
+            </div>
+        </md-tab-body>
+    </md-tab>
+</md-tabs>
