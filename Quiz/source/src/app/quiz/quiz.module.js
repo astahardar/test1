@@ -3,6 +3,6 @@
 
     angular
         .module('quiz-module', [
-            'student-module'
+            'student-module', 'QuizService'
         ]);
 })();

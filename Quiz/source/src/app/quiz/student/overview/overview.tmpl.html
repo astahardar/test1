@@ -12,15 +12,15 @@
     <md-tab>
         <md-tab-label layout="column">
             <span class="display-block">Opin Verkefni</span>
-            <span class="display-block">{{::vm.Projects.length}}</span>
+            <span class="display-block">{{::vm.Quizes.length}}</span>
         </md-tab-label>
         <md-tab-body>
             <div layout="row" layout-xs="column">
-                <md-list-item ng-repeat="p in ::vm.Projects">
-                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-5.png" title= {{::p.Title}} subtitle= "{{::p.Open.From}} - {{::p.Open.Till}}" title-position="top">
+                <md-list-item ng-repeat="q in ::vm.Quizes">
+                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-5.png" title= {{::q.Title}} subtitle= "{{::q.Open.From}} - {{::q.Open.Till}}" title-position="top">
                         <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
-                            <p>Kennari: {{::p.Creator}}</p>
-                            <a ng-href="#/quizes/quiz/{{::p.Id}}">Taka próf</a>
+                            <p>Kennari: {{::q.Creator}}</p>
+                            <a ng-href="#/quizes/quiz/{{::q.Id}}">Taka próf</a>
                         </div>
                         <md-divider></md-divider>
                     </tri-widget>

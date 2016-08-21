@@ -1,8 +1,8 @@
 <div layout="column" id="Main" layout-align="center">
     <md-card id="MainCard" layout-align="center">
         <md-card-content class="overflow-auto">
-          <div  layout="column" layout-align="center">
-              <div  layout="row" layout-xs="column" flex layout-align="center">
+          <div  layout="row" layout-align="center">
+              <div layout="row" layout-xs="column" flex layout-align="center" layout-wrap>
                 <p class="md-padding words md-margin" flex>
                   <span ng-repeat="w in ::vm.Words" ng-class="{'currentWord': vm.WordIndex == $index, 'otherWord': vm.WordIndex != $index}"><span ng-style="vm.GetColorForAnswer($index)">{{::w.Word}}</span></span>
                 </p>
@@ -15,7 +15,7 @@
           </div>
 
             <div flex layout="row" ng-hide="!vm.IsDone" layout-align="center">
-                <p>Þú fékkst {{vm. Results.Score}} / {{vm.Results.Answers.length}} rétt</p>
+                <p>Þú fékkst {{vm.Score}} / {{vm.Words.length}} rétt</p>
                 <md-button class="md-padding md-margin md-raised" palette-background="{{::c.Color}}:100" ng-click="vm.TakeAgain()">Taka Aftur</md-button>
             </div>
         </md-card-content>

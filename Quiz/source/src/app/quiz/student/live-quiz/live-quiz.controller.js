@@ -6,7 +6,7 @@
         .controller('LiveQuizController', LiveQuizController, '$stateParams', 'triTheming', '$state');
 
     /* @ngInject */
-    function LiveQuizController($log, $stateParams, $filter, triTheming, $state) {
+    function LiveQuizController($log, $stateParams, $filter, triTheming, $state, QuizService) {
         var vm = this;
 
         $log.log($stateParams.id);
@@ -18,6 +18,7 @@
         vm.AnswerData = [];
         vm.IsDone = false;
         vm.TakeAgain = TakeAgain;
+        vm.Score = 0;
 
         vm.WordCatagories = [{
             Title : 'Nafnorð',
@@ -49,41 +50,13 @@
             Color : 'green'
         },{
             Title : 'Samtenging',
-            Code :  's',
+            Code :  'c',
             Color : 'lime'
         }];
 
-        //get Test with id
-        vm.Test = {
-            Id : '1',
-            Title : 'Title',
-            ParsedText :{
-                Sentence:{
-                    WORDS:[{
-                        Word: 'Hjólabáturinn',
-                        Class: 'n'
-                    }, {
-                        Word: 'er',
-                        Class: 's'
-                    }, {
-                        Word: 'gulur',
-                        Class: 'l'
-                    }]
-                }
-            }
-        };
+        vm.Quiz = QuizService.getQuiz($stateParams.id);
 
-        vm.Results = {
-            ApplcationName: '',
-            StutendId : '',
-            ApplicationId: vm.Test.Id,
-            LevelName : vm.Test.Title,
-            Answers : [],
-            Score : 0
-
-        };
-
-        vm.Words = vm.Test.ParsedText.Sentence.WORDS;
+        vm.Words = vm.Quiz.ParsedText.Sentence.WORDS;
 
         function TakeAgain() {
             $log.log('Reload');
@@ -93,7 +66,6 @@
         function Answer(wordIndex, answerID) {
             if(!vm.IsDone) {
                 vm.AnswerData[wordIndex] = answerID;
-                vm.Results.Answers = vm.AnswerData;
                 $log.log(vm.Words[wordIndex].Word + ' answered with : ' + answerID);
                 vm.WordIndex++;
                 $log.log(vm.Results);
@@ -101,7 +73,7 @@
                 if(vm.WordIndex > vm.Words.length-1) {
                     vm.IsDone = true;
                     CalculateAnswers(vm.AnswerData);
-                    //Send Results
+                    QuizService.createAnswers('',vm.Quiz.Id,vm.Quiz.Title, vm.AnswerData, vm.Score);
 
                 }
             }
@@ -144,16 +116,15 @@
         }
 
         function CalculateAnswers(Answers) {
-            var counter = 0;
+            var score = 0;
             for (var i = 0; i < vm.Words.length; i++) {
                // $log.log(vm.Words[i].Word + '    ' + Answers[i]);
                 if(vm.Words[i].Class == Answers[i]) {
-                    counter = counter + 1;
+                    score = score + 1;
                     $log.log('correct');
                 }
             }
-            vm.Results.Score = counter;
-            //$log.log(vm.Results.Score);
+            vm.Score = score;
         }
 
     }
