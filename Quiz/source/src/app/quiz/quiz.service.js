@@ -12,6 +12,7 @@
         return {
             getQuizes: getQuizes,
             getQuiz: getQuiz,
+            createQuiz: createQuiz,
             createAnswers: createAnswers
         };
 
@@ -154,6 +155,10 @@
             else {
                 return quiz2;
             }
+
+        }
+
+        function createQuiz() {
 
         }
 

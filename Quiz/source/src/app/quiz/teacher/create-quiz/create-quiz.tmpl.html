@@ -1,0 +1,106 @@
+<div>
+    <div flex layout="row" layout-align="center center" layout-fill>
+        <md-card flex="90" class="tri-wizard-card md-whiteframe-z1 margin-bottom-100" tri-wizard>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                    <h2>Nýtt Próf</h2><h2></span></h2>
+                </div>
+                <md-progress-linear class="md-accent padding-bottom-10" md-mode="determinate" ng-value="triWizard.progress"></md-progress-linear>
+            </md-toolbar>
+            <md-card-content>
+                <md-tabs class="md-primary" layout-fill md-selected="triWizard.currentStep" md-dynamic-height>
+                    <md-tab id="account">
+                        <md-tab-label>
+                            <span class="oxy-step-label">1</span>
+                            <span translate>Próf</span>
+                        </md-tab-label>
+                        <md-tab-body>
+                            <md-content class="md-padding">
+                                <form name="accountForm" tri-wizard-form novalidate>
+                                    <div>
+                                        <md-input-container class="md-block">
+                                            <label translate>Nafn</label>
+                                            <input name="text" ng-model="vm.quiz.Title" required>
+                                            <div ng-messages="" md-auto-hide="false" ng-show="">
+                                                <div ng-message when="required">
+                                                    <span translate>This field is required</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Tímabil</label>
+                                            <input type="text" name="email" ng-model="vm.Data" required>
+                                            <div ng-messages="" md-auto-hide="false" ng-show="">
+                                                <div ng-message when="required">
+                                                    <span translate>This field is required</span>
+                                                </div>
+                                                <div ng-message when="">
+                                                    <span translate></span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                        <div layout layout-xs="column" flex>
+                                            <md-input-container flex>
+                                                <label translate>Setningar til prófs</label>
+                                                <input type="text" name="" ng-model="vm.Data" required>
+                                                <div ng-messages="" md-auto-hide="false" ng-show="">
+                                                    <div ng-message when="required">
+                                                        <span translate>This field is required</span>
+                                                    </div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </form>
+                            </md-content>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab id="address" ng-disabled="accountForm.$invalid">
+                        <md-tab-label>
+                            <span class="oxy-step-label">2</span>
+                            <span translate>Svör</span>
+                        </md-tab-label>
+                        <md-tab-body>
+                            <md-content class="md-padding">
+                                <form name="addressForm" tri-wizard-form>
+                                    <div>
+                                        <div layout layout-xs="column" flex>
+                                            <md-input-container flex>
+                                                <label translate>Svör</label>
+                                                <input name="firstName" ng-model="vm.Data" required>
+                                                <div ng-messages="addressForm.firstName.$error" md-auto-hide="false" ng-show="addressForm.firstName.$touched">
+                                                    <div ng-message when="required">
+                                                        <span translate>This field is required</span>
+                                                    </div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </form>
+                            </md-content>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab id="confirm" ng-disabled="billingForm.$invalid">
+                        <md-tab-label>
+                            <span class="oxy-step-label">4</span>
+                            <span translate>Confirmation</span>
+                        </md-tab-label>
+                        <md-tab-body>
+                            <md-content class="md-padding">
+                                <div class="padding-40" flex layout="column" layout-align="center center">
+                                    <md-icon class="big-icon" md-font-icon="zmdi zmdi-cake"></md-icon>
+                                    <h2 class="md-display-2" translate>Congratulations - we will be in touch</h2>
+                                </div>
+                            </md-content>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()" translate="Previous"></md-button>
+                <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1" ng-disabled="triWizard.nextStepDisabled()" translate="Next"></md-button>
+                <md-button class="md-accent md-raised" ng-click="triWizard.currentStep = 3" ng-show="triWizard.progress == 100 && triWizard.currentStep < 3" translate="Send"></md-button>
+            </md-card-actions>
+    </div>
+    </md-card>
+</div>

@@ -36,10 +36,8 @@
             }
         });
 
-
-
         triMenuProvider.addMenu({
-            name: 'Quizes',
+            name: 'Student',
             icon: 'fa fa-tree',
             type: 'dropdown',
             priority: 1.1,

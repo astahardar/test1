@@ -7,7 +7,7 @@
             'triangular',
             'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
             'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular), 'ngFileUpload',
-            'student-module',
+            'student-module', 'teacher-module',
             // uncomment above to activate the example seed module
             'app.translate'
             // only need one language?  if you want to turn off translations

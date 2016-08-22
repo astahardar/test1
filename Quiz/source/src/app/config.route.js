@@ -50,6 +50,6 @@
         $urlRouterProvider.when('/', '/quizes/overview');
 
         // always goto 404 if route not found
-        $urlRouterProvider.otherwise('/404');
+      //  $urlRouterProvider.otherwise('/404');
     }
 })();
