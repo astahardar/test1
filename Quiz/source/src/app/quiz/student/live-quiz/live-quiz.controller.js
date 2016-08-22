@@ -81,31 +81,17 @@
 
         function GetColorForAnswer(wordIndex)
         {
-            //$log.log("WordIndex:" + wordIndex);
             var colorClass = vm.AnswerData[wordIndex];
-            if(angular.isDefined(colorClass)) {
-              //  $log.log('Color class to search for:' + colorClass);
+            if(angular.isDefined(colorClass))
+            {
                 var found = $filter('filter')(vm.WordCatagories, {Code: colorClass}, true);
                 if(found.length > 0) {
-                  //  $log.log('Length:' + found.length);
-                  //  $log.log('Found:' + found[0].Color);
 
-                    return {'color': found[0].Color};
+                    var color = triTheming.getPaletteColor(found[0].Color, 100);
+
+                    return {'color': triTheming.rgba(color.value)};
                 }
             }
-/*
-            if(colorClass != undefined)
-            {
-              var found = $filter('filter')(vm.WordCatagories, {Code: colorClass}, false);
-              $log.log(found.length);
-              return found.Color;
-            }
-            else
-            {
-              $log.log("Noting");
-              return "nothing";
-            }*/
-
         }
 
         function itemStyle(palette) {
