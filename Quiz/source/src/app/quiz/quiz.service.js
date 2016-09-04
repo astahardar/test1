@@ -13,7 +13,7 @@
             getQuizes: getQuizes,
             getQuiz: getQuiz,
             createQuiz: createQuiz,
-            createAnswers: createAnswers
+            getAnswers: getAnswers
         };
 
 
@@ -162,7 +162,7 @@
 
         }
 
-        function createAnswers(studentId, quizId, quizTitle, Answers, Score) {
+        function getAnswers(sentence) {
             /*
             $window.localStorage.setItem(EVENT.eventId, event.eventId);
             $window.localStorage.setItem(EVENT.liveEventId, event.eventId);
@@ -171,6 +171,18 @@
                      TODO: Get back eventId and save in local storage
                     return response.data;
                 });*/
+            var WORDS = [];
+            var words = sentence.split(' ');
+            for (var i = 0; i < words.length; i++) {
+                var w = {
+                    Word: words[i],
+                    Class : 'l'
+                };
+                WORDS.push(w);
+            }
+
+            return WORDS;
+
         }
 
     }})();

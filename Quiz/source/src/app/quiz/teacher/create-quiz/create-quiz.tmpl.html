@@ -67,6 +67,8 @@
                             </md-content>
                         </md-tab-body>
                     </md-tab>
+
+
                     <md-tab id="address" ng-disabled="">
                         <md-tab-label>
                             <span class="oxy-step-label">2</span>
@@ -78,12 +80,10 @@
                                     <div>
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
-                                                <label translate>Svör</label>
-                                                <input name="answers" ng-model="vm.quiz.Sentence" required>
-                                                <div ng-messages="addressForm.firstName.$error" md-auto-hide="false" ng-show="addressForm.firstName.$touched">
-                                                    <div ng-message when="required">
-                                                        <span translate>This field is required</span>
-                                                    </div>
+                                                <label translate></label>
+                                                <div ng-repeat="w in ::vm.answers">
+                                                    <p>Orð: {{::w.Word}}
+                                                    Orðflokkur:<select ng-model ="::w.Class"> <option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</option> </select> </p>
                                                 </div>
                                             </md-input-container>
                                         </div>
@@ -92,16 +92,18 @@
                             </md-content>
                         </md-tab-body>
                     </md-tab>
-                    <md-tab id="confirm" ng-disabled="billingForm.$invalid">
+
+
+                    <md-tab id="confirm" ng-disabled="">
                         <md-tab-label>
-                            <span class="oxy-step-label">4</span>
+                            <span class="oxy-step-label">3</span>
                             <span translate>Staðfesta</span>
                         </md-tab-label>
                         <md-tab-body>
                             <md-content class="md-padding">
                                 <div class="padding-40" flex layout="column" layout-align="center center">
-                                    <md-icon class="big-icon" md-font-icon="zmdi zmdi-cake"></md-icon>
-                                    <h2 class="md-display-2" translate>Congratulations - we will be in touch</h2>
+                                    <md-icon class="big-icon" md-font-icon="zmdi zmdi-assignment-check"></md-icon>
+                                    <h2 layout-align="center" class="md-display-2" translate>Smelltu á "Birta" til að prófið verði sýnilegt nemendum</h2>
                                 </div>
                             </md-content>
                         </md-tab-body>
@@ -110,8 +112,9 @@
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()" translate="Previous"></md-button>
+                <md-button class="md-primary md-raised" ng-click="vm.getAnswers(); triWizard.nextStep()" ng-hide="" translate="Fá orðflokka"></md-button>
                 <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1" ng-disabled="triWizard.nextStepDisabled()" translate="Next"></md-button>
-                <md-button class="md-accent md-raised" ng-click="vm.postQuiz()" ng-show="triWizard.progress == 100 && triWizard.currentStep < 3" translate="Birta"></md-button>
+                <md-button class="md-accent md-raised" ng-click="vm.postQuiz()" ng-show="triWizard.progress == 100 && triWizard.currentStep > 1" translate="Birta"></md-button>
             </md-card-actions>
     </div>
     </md-card>
