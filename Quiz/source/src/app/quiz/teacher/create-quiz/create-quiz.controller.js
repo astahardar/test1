@@ -63,7 +63,9 @@
         };
 
         function getAnswers() {
-            vm.answers = QuizService.getAnswers(vm.quiz.Sentence);
+            var sent = vm.quiz.Sentence.replace("<p>", "");
+            sent = sent.replace("</p>", "");
+            vm.answers = QuizService.getAnswers(sent);
             $log.log('getting answers');
             $log.log(vm.quiz.ParsedText.Sentence.WORDS);
         }
