@@ -12,6 +12,7 @@
         vm.getAnswers = getAnswers;
         vm.answers;
 
+
         vm.WordCatagories = [{
             Title : 'Nafnorð',
             Code :  'n',

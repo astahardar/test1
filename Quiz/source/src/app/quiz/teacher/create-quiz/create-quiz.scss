@@ -2,11 +2,6 @@
   padding: 0px;
 }
 
-.wordCategories {
-  display: block;
-
-}
-
 .textbox {
   border-style: solid;
   border-color: lightgrey;
@@ -14,10 +9,19 @@
 }
 
 .create-quiz-words {
-
   font-size: 1.5em;
-
-  justify-content: center;
   display: block;
+  padding: 0 0;
+  margin: 0 0;
+}
 
+.create-quiz-wordCategories {
+  display: block;
+  margin: 10px 0 0 0;
+  background-color: #EEEEEE;
+}
+
+.create-quiz-wordAndCategory {
+  display: inline-block;
+  margin: 0 50px 30px 0;
 }

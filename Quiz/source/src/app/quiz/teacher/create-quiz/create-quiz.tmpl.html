@@ -59,9 +59,11 @@
                         <md-tab-body>
                             <md-content class="md-padding">
                                 <form name="addressForm" tri-wizard-form>
-                                    <div ng-repeat="w in ::vm.answers" layout="column">
+                                    <div class="create-quiz-wordAndCategory" ng-repeat="w in ::vm.answers" layout="column">
                                         <p class="create-quiz-words">{{::w.Word}}</p>
-                                        <md-select class="create-quiz-wordCategories" ng-model ="::w.Class"> <md-option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</md-option> </md-select>
+                                        <md-select class="create-quiz-wordCategories" ng-model ="::w.Class">
+                                          <md-option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</md-option>
+                                        </md-select>
                                     </div>
                                 </form>
                             </md-content>
