@@ -37,7 +37,7 @@
                                         </div>
                                         <md-input-container class="md-block textbox">
                                             <label translate>Setningar til prófs</label>
-                                            <text-angular name="" ng-model="vm.quiz.Sentence" ta-target-toolbars="editor-toolbar" required></text-angular>
+                                            <text-angular name="" ng-model="vm.quiz.Sentence" ta-target-toolbars="editor-toolbar" ta-paste="converter($html)" required></text-angular>
                                             <div ng-messages="" md-auto-hide="false" ng-show="">
                                                 <div ng-message when="required">
                                                     <span translate>This field is required</span>

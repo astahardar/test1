@@ -63,11 +63,12 @@
         };
 
         function getAnswers() {
+          /*
             var sent = vm.quiz.Sentence.replace("<p>", "");
-            sent = sent.replace("</p>", "");
-            vm.answers = QuizService.getAnswers(sent);
+            sent = sent.replace("</p>", "");*/
+            vm.answers = QuizService.getAnswers(vm.quiz.Sentence);
             $log.log('getting answers');
-            $log.log(vm.quiz.ParsedText.Sentence.WORDS);
+            $log.log(vm.quiz.Sentence);
         }
 
         function postQuiz() {
