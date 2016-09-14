@@ -59,15 +59,16 @@
                         <md-tab-body>
                             <md-content class="md-padding">
                                 <form name="addressForm" tri-wizard-form>
-                                    <div ng-repeat="w in ::vm.answers" layout="column">
+                                    <div class="create-quiz-wordAndCategory" ng-repeat="w in ::vm.answers" layout="column">
                                         <p class="create-quiz-words">{{::w.Word}}</p>
-                                        <md-select class="create-quiz-wordCategories" ng-model ="::w.Class"> <md-option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</md-option> </md-select>
+                                        <md-select class="create-quiz-wordCategories" ng-model ="::w.Class">
+                                          <md-option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</md-option>
+                                        </md-select>
                                     </div>
                                 </form>
                             </md-content>
                         </md-tab-body>
                     </md-tab>
-
 
                     <md-tab id="confirm" ng-disabled="">
                         <md-tab-label>
@@ -78,7 +79,7 @@
                             <md-content class="md-padding">
                                 <div class="padding-40" flex layout="column" layout-align="center center">
                                     <md-icon class="big-icon" md-font-icon="zmdi zmdi-assignment-check"></md-icon>
-                                    <h2 layout-align="center" class="md-display-2" translate>Smelltu á "Birta" til að prófið verði sýnilegt nemendum</h2>
+                                    <h2 layout-align="center" class="md-display-2" translate>Verkefni er opið fyrir nemendum</h2>
                                 </div>
                             </md-content>
                         </md-tab-body>
@@ -86,10 +87,9 @@
                 </md-tabs>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()" translate="Previous"></md-button>
-                <md-button class="md-primary md-raised" ng-click="vm.getAnswers(); triWizard.nextStep()" ng-hide="" translate="Greina"></md-button>
-                <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 2" ng-disabled="triWizard.nextStepDisabled()" translate="Next"></md-button>
-                <md-button class="md-accent md-raised" ng-click="vm.postQuiz()" ng-show="triWizard.progress == 100 && triWizard.currentStep > 1" translate="Birta"></md-button>
+                <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="" ng-disabled="triWizard.prevStepDisabled()" translate="Til baka"></md-button>
+                <md-button class="md-primary md-raised" ng-click="vm.getAnswers(); triWizard.nextStep()" ng-hide="!triWizard.prevStepDisabled()" translate="Greina"></md-button>
+                <md-button class="md-accent md-raised" ng-click="vm.postQuiz(); triWizard.nextStep()" ng-show="!triWizard.prevStepDisabled()" translate="Birta verkefni"></md-button>
             </md-card-actions>
     </div>
     </md-card>

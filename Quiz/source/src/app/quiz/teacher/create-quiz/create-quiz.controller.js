@@ -10,6 +10,7 @@
         var vm = this;
         vm.postQuiz = postQuiz;
         vm.getAnswers = getAnswers;
+        vm.htmlToPlaintext = htmlToPlaintext;
         vm.answers;
 
         vm.WordCatagories = [{
@@ -66,9 +67,9 @@
           /*
             var sent = vm.quiz.Sentence.replace("<p>", "");
             sent = sent.replace("</p>", "");*/
-            vm.answers = QuizService.getAnswers(vm.quiz.Sentence);
+            vm.answers = QuizService.getAnswers(htmlToPlaintext(vm.quiz.Sentence));
             $log.log('getting answers');
-            $log.log(vm.quiz.Sentence);
+            $log.log(vm.quiz.ParsedText.Sentence.WORDS);
         }
 
         function postQuiz() {
@@ -76,7 +77,12 @@
             //vm.results = QuizService.createQuiz(quiz);
             $log.log('posting to service');
             vm.quiz.ParsedText.Sentence.WORDS = vm.answers;
+            QuizService.createQuiz(vm.quiz);
             $log.log(vm.quiz);
+        }
+
+        function htmlToPlaintext(text) {
+            return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
         }
     }
 })();

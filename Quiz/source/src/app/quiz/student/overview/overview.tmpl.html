@@ -17,7 +17,7 @@
         <md-tab-body>
             <div layout="row" layout-xs="column">
                 <md-list-item ng-repeat="q in ::vm.Quizes">
-                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-5.png" title= {{::q.Title}} subtitle= "{{::q.Open.From}} - {{::q.Open.Till}}" title-position="top">
+                    <tri-widget layout-margin flex palette-background="blue:500" avatar="assets/images/avatars/avatar-5.png" title= {{::q.Title}} subtitle= "{{::q.Open.From | date}} - {{::q.Open.Till | date}}" title-position="top">
                         <div class="font-weight-300 md-title font-style-italic line-height-big padding-normal">
                             <p>Kennari: {{::q.Creator}}</p>
                             <a ng-href="#/quizes/quiz/{{::q.Id}}">Taka próf</a>

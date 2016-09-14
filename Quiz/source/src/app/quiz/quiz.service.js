@@ -5,27 +5,17 @@
         .module('student-module')
         .factory('QuizService', QuizService);
 
-    QuizService.$inject = ['$http', '$window'];
+    QuizService.$inject = ['$http', '$window', '$log'];
 
     /* @ngInject */
-    function QuizService($http, $window) {
+    function QuizService($http, $window, $log) {
         return {
             getQuizes: getQuizes,
             getQuiz: getQuiz,
             createQuiz: createQuiz,
-            getAnswers: getAnswers
-        };
-
-
-        function getQuizes() {
-            /*
-            return $http.get(API_ROUTE.url + 'teachers/' + teacherId + '/student_class/' + classId + '/events')
-                .then(function(response) {
-                    return response;
-                });*/
-
-            var Projects = [{
-                Id: '1',
+            getAnswers: getAnswers,
+            Projects : [{
+                Id: '0',
                 Title: 'Málfræði 1',
                 Creator: 'Kennari Kennarason',
                 Open: {
@@ -48,7 +38,7 @@
                 }
 
             }, {
-                Id: '2',
+                Id: '1',
                 Title: 'Málfræði 2',
                 Creator: 'Kennari Kennaradóttir',
                 Open: {
@@ -70,9 +60,18 @@
                     }
                 }
 
-            }];
+            }]
 
-            return Projects;
+        };
+
+        function getQuizes() {
+            /*
+            return $http.get(API_ROUTE.url + 'teachers/' + teacherId + '/student_class/' + classId + '/events')
+                .then(function(response) {
+                    return response;
+                });*/
+
+            return this.Projects;
         }
 
         function getQuiz(id) {
@@ -81,85 +80,16 @@
                 .then(function(response) {
                     return response;
                 });*/
-
-            var quiz1 = {
-                Id : '1',
-                Title : 'Title',
-                ParsedText :{
-                    Sentence:{
-                        WORDS:[{
-                            Word: 'Hjólabáturinn',
-                            Class: 'n'
-                        }, {
-                            Word: 'er',
-                            Class: 's'
-                        }, {
-                            Word: 'gulur',
-                            Class: 'l'
-                        }]
-                    }
-                }
-            };
-
-            var quiz2 = {
-                Id : '1',
-                Title : 'Title',
-                ParsedText :{
-                    Sentence:{
-                        WORDS:[{
-                            Word: 'Siggi',
-                            Class: 'n'
-                        }, {
-                            Word: 'sjónauki',
-                            Class: 'n'
-                        }, {
-                            Word: 'hefur',
-                            Class: 's'
-                        }, {
-                            Word: 'sagst',
-                            Class: 's'
-                        }, {
-                            Word: 'vera',
-                            Class: 's'
-                        }, {
-                            Word: 'í',
-                            Class: 'a'
-                        }, {
-                            Word: 'hernum',
-                            Class: 'n'
-                        }, {
-                            Word: 'en',
-                            Class: 'c'
-                        }, {
-                            Word: 'hann',
-                            Class: 'f'
-                        }, {
-                            Word: 'er',
-                            Class: 's'
-                        }, {
-                            Word: 'alltaf',
-                            Class: 'a'
-                        }, {
-                            Word: 'að',
-                            Class: 'a'
-                        }, {
-                            Word: 'ljúga',
-                            Class: 's'
-                        }]
-                    }
-                }
-            };
-            if(id == 1) {
-                return quiz1;
-            }
-            else {
-                return quiz2;
-            }
+            return this.Projects[id];
 
         }
 
-        function createQuiz() {
-
+        function createQuiz(quiz) {
+            $log.log('createQuiz');
+            quiz.Id= this.Projects.length;
+            quiz.Creator= 'Kennari Kennaradóttir';
+            this.Projects.push(quiz);
+            $log.log(this.Projects);
         }
 
         function getAnswers(sentence) {
@@ -171,12 +101,47 @@
                      TODO: Get back eventId and save in local storage
                     return response.data;
                 });*/
+
+            var WordCatagories = [{
+                Title : 'Nafnorð',
+                Code :  'n',
+                Color : 'pink'
+            },{
+                Title : 'Lýsingarorð',
+                Code :  'l',
+                Color : 'red'
+            },{
+                Title : 'Fornafn',
+                Code :  'f',
+                Color : 'purple'
+            },{
+                Title : 'Greinir',
+                Code :  'g',
+                Color : 'indigo'
+            },{
+                Title : 'Töluorð',
+                Code :  't',
+                Color : 'blue'
+            },{
+                Title : 'Sagnorð',
+                Code :  's',
+                Color : 'cyan'
+            },{
+                Title : 'Atviksorð',
+                Code :  'a',
+                Color : 'green'
+            },{
+                Title : 'Samtenging',
+                Code :  'c',
+                Color : 'lime'
+            }];
+
             var WORDS = [];
             var words = sentence.split(' ');
             for (var i = 0; i < words.length; i++) {
                 var w = {
                     Word: words[i],
-                    Class : 'l'
+                    Class : WordCatagories[Math.floor(Math.random() * 8)].Code
                 };
                 WORDS.push(w);
             }
