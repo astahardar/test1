@@ -37,7 +37,7 @@
                                         </div>
                                         <md-input-container class="md-block textbox">
                                             <label translate>Setningar til prófs</label>
-                                            <text-angular name="" ng-model="vm.quiz.Sentence" ta-target-toolbars="editor-toolbar" ta-paste="converter($html)" required></text-angular>
+                                            <text-angular name="" ng-model="vm.quiz.UnparsedText" ta-target-toolbars="editor-toolbar" ta-paste="converter($html)" required></text-angular>
                                             <div ng-messages="" md-auto-hide="false" ng-show="">
                                                 <div ng-message when="required">
                                                     <span translate>This field is required</span>
@@ -88,7 +88,7 @@
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="" ng-disabled="triWizard.prevStepDisabled()" translate="Til baka"></md-button>
-                <md-button class="md-primary md-raised" ng-click="vm.getAnswers(); triWizard.nextStep()" ng-hide="!triWizard.prevStepDisabled()" translate="Greina"></md-button>
+                <md-button class="md-primary md-raised" ng-click="vm.parseText(); triWizard.nextStep()" ng-hide="!triWizard.prevStepDisabled()" translate="Greina"></md-button>
                 <md-button class="md-accent md-raised" ng-click="vm.postQuiz(); triWizard.nextStep()" ng-show="!triWizard.prevStepDisabled()" translate="Birta verkefni"></md-button>
             </md-card-actions>
     </div>

@@ -9,9 +9,9 @@
     function CreateQuizController($log, QuizService) {
         var vm = this;
         vm.postQuiz = postQuiz;
-        vm.getAnswers = getAnswers;
+        vm.parseText = parseText;
         vm.htmlToPlaintext = htmlToPlaintext;
-        vm.answers;
+        vm.ParsedText;
 
         vm.WordCatagories = [{
             Title : 'Nafnorð',
@@ -55,21 +55,16 @@
                 From: '',
                 Till : ''
             },
-            Sentence : '',
-            ParsedText :{
-                Sentence:{
-                    WORDS:[{}]
-                }
-            }
+            UnparsedText : '',
+            ParsedText : ''
         };
 
-        function getAnswers() {
+        function parseText() {
           /*
             var sent = vm.quiz.Sentence.replace("<p>", "");
             sent = sent.replace("</p>", "");*/
-            vm.answers = QuizService.getAnswers(htmlToPlaintext(vm.quiz.Sentence));
-            $log.log('getting answers');
-            $log.log(vm.quiz.ParsedText.Sentence.WORDS);
+            vm.ParsedText = QuizService.parseText(htmlToPlaintext(vm.quiz.UnparsedText));
+            $log.log(vm.ParsedText);
         }
 
         function postQuiz() {
