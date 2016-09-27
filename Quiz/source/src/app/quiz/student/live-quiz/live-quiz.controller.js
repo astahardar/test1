@@ -20,42 +20,10 @@
         vm.TakeAgain = TakeAgain;
         vm.Score = 0;
 
-        vm.WordCatagories = [{
-            Title : 'Nafnorð',
-            Code :  'n',
-            Color : 'pink'
-        },{
-            Title : 'Lýsingarorð',
-            Code :  'l',
-            Color : 'red'
-        },{
-            Title : 'Fornafn',
-            Code :  'f',
-            Color : 'purple'
-        },{
-            Title : 'Greinir',
-            Code :  'g',
-            Color : 'indigo'
-        },{
-            Title : 'Töluorð',
-            Code :  't',
-            Color : 'blue'
-        },{
-            Title : 'Sagnorð',
-            Code :  's',
-            Color : 'cyan'
-        },{
-            Title : 'Atviksorð',
-            Code :  'a',
-            Color : 'green'
-        },{
-            Title : 'Samtenging',
-            Code :  'c',
-            Color : 'lime'
-        }];
+        vm.WordCatagories = QuizService.getCategories();
 
         vm.Quiz = QuizService.getQuiz($stateParams.id);
-
+        $log.log(vm.Quiz);
         vm.Words = vm.Quiz.ParsedText.Sentence.WORDS;
 
         function TakeAgain() {
@@ -68,8 +36,7 @@
                 vm.AnswerData[wordIndex] = answerID;
                 $log.log(vm.Words[wordIndex].Word + ' answered with : ' + answerID);
                 vm.WordIndex++;
-                $log.log(vm.Results);
-                QuizService.postAnswer(vm.Quiz.Id, vm.Quiz.Title, vm.Words[wordIndex], answerID);
+                QuizService.postAnswer(vm.Quiz.Id, vm.Quiz.Level, vm.Words[wordIndex], answerID);
                 if(vm.WordIndex > vm.Words.length-1) {
                     vm.IsDone = true;
                     CalculateAnswers(vm.AnswerData);

@@ -27,13 +27,22 @@
                                                 </div>
                                             </div>
                                         </md-input-container>
-                                        <div layout layout-xs="column" flex>
-                                            <label>Próf opnar</label>
-                                            <md-datepicker ng-model="vm.quiz.Open.From" md-placeholder="Veldu dags."></md-datepicker>
+                                        <div>
+                                            <div  layout layout-xs="row" flex>
+                                                <md-datepicker ng-model="vm.quiz.Open.From" md-placeholder="Próf opnar"></md-datepicker>
+                                            </div>
+                                            <div lass="labelCenter" layout layout-xs="row" flex>
+                                                <md-datepicker ng-model="vm.quiz.Open.Till" md-placeholder="Próf lokar"></md-datepicker>
+                                            </div>
+
                                         </div>
-                                        <div layout layout-xs="column" flex>
-                                            <label>Próf lokar</label>
-                                            <md-datepicker ng-model="vm.quiz.Open.Till" md-placeholder="Veldu dags."></md-datepicker>
+                                        <div layout layout-xs="row" flex>
+
+                                            <md-select ng-model="vm.quiz.Level" placeholder="Veldu erfileikastig">
+                                                <md-option value="Auðvelt">Auðvelt</md-option>
+                                                <md-option value="Miðlungs">Miðlungs</md-option>
+                                                <md-option value="Erfitt">Erfitt</md-option>
+                                            </md-select>
                                         </div>
                                         <md-input-container class="md-block textbox">
                                             <label translate>Setningar til prófs</label>

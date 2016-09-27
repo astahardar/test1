@@ -55,6 +55,7 @@
                 From: '',
                 Till : ''
             },
+            Level : '',
             UnparsedText : '',
             ParsedText : {
                 Sentence : {
