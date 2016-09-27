@@ -56,7 +56,12 @@
                 Till : ''
             },
             UnparsedText : '',
-            ParsedText : ''
+            ParsedText : {
+                Sentence : {
+                    WORDS : []
+                }
+
+            }
         };
 
         function parseText() {
@@ -71,7 +76,7 @@
             //vm.results = QuizService.createAnswers(quiz.Sentence);
             //vm.results = QuizService.createQuiz(quiz);
             $log.log('posting to service');
-            vm.quiz.ParsedText.Sentence.WORDS = vm.answers;
+            vm.quiz.ParsedText.Sentence.WORDS = vm.ParsedText;
             QuizService.createQuiz(vm.quiz);
             $log.log(vm.quiz);
         }

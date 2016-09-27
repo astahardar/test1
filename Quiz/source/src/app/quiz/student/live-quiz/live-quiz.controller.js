@@ -69,11 +69,11 @@
                 $log.log(vm.Words[wordIndex].Word + ' answered with : ' + answerID);
                 vm.WordIndex++;
                 $log.log(vm.Results);
-
+                QuizService.postAnswer(vm.Quiz.Id, vm.Quiz.Title, vm.Words[wordIndex], answerID);
                 if(vm.WordIndex > vm.Words.length-1) {
                     vm.IsDone = true;
                     CalculateAnswers(vm.AnswerData);
-                    QuizService.createAnswers('',vm.Quiz.Id,vm.Quiz.Title, vm.AnswerData, vm.Score);
+                    //QuizService.createAnswers('',vm.Quiz.Id,vm.Quiz.Title, vm.AnswerData, vm.Score);
 
                 }
             }
