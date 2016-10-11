@@ -1,0 +1,5 @@
+<div flex layout="row" layout-xs="column" ng-class="{'someIndication': vm.IsDone == true}">
+    <div flex layout="column" ng-repeat="c in ::vm.WordCatagories | orderBy: 'Title'">
+        <md-button class="md-padding md-margin md-raised" palette-background="{{::c.Color}}:100" ng-click="vm.Answer(vm.WordIndex, c.Code)" ng-disabled="vm.IsDone">{{::c.Title}}</md-button>
+    </div>
+</div>

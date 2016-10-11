@@ -6,82 +6,41 @@
         .controller('CreateQuizController', CreateQuizController);
 
     /* @ngInject */
-    function CreateQuizController($log, QuizService) {
+    function CreateQuizController($log, QuizService, $scope) {
         var vm = this;
-        vm.postQuiz = postQuiz;
+        vm.createQuiz = createQuiz;
         vm.parseText = parseText;
         vm.htmlToPlaintext = htmlToPlaintext;
-        vm.ParsedText;
-
-        vm.WordCatagories = [{
-            Title : 'Nafnorð',
-            Code :  'n',
-            Color : 'pink'
-        },{
-            Title : 'Lýsingarorð',
-            Code :  'l',
-            Color : 'red'
-        },{
-            Title : 'Fornafn',
-            Code :  'f',
-            Color : 'purple'
-        },{
-            Title : 'Greinir',
-            Code :  'g',
-            Color : 'indigo'
-        },{
-            Title : 'Töluorð',
-            Code :  't',
-            Color : 'blue'
-        },{
-            Title : 'Sagnorð',
-            Code :  's',
-            Color : 'cyan'
-        },{
-            Title : 'Atviksorð',
-            Code :  'a',
-            Color : 'green'
-        },{
-            Title : 'Samtenging',
-            Code :  'c',
-            Color : 'lime'
-        }];
-
-        vm.quiz = {
-            Id : '3',
-            Title : '',
-            Creator: 'Kennari Kennarason',
-            Open : {
-                From: '',
-                Till : ''
-            },
-            Level : '',
-            UnparsedText : '',
-            ParsedText : {
-                Sentence : {
-                    WORDS : []
-                }
-
-            }
-        };
+        vm.parsedText;
+        vm.WordCatagories = QuizService.getCategories();
+        vm.reload = reload;
+        vm.title;
+        vm.open;
+        vm.close;
+        vm.level;
+        vm.unparsedText;
 
         function parseText() {
-          /*
-            var sent = vm.quiz.Sentence.replace("<p>", "");
-            sent = sent.replace("</p>", "");*/
-            vm.ParsedText = QuizService.parseText(htmlToPlaintext(vm.quiz.UnparsedText));
-            $log.log(vm.ParsedText);
+            $log.log('parsing text');
+            $log.log(vm.unparsedText);
+            QuizService.parseText(htmlToPlaintext(vm.unparsedText))
+                .then(function (response){
+                    vm.parsedText = angular.copy(response.ParsedText);
+                    //vm.parsedText = response.ParsedText;
+                    $log.log(vm.parsedText);
+                }, function (error) {
+                    $log.log(error);
+                });
         }
 
-        function postQuiz() {
-            //vm.results = QuizService.createAnswers(quiz.Sentence);
-            //vm.results = QuizService.createQuiz(quiz);
-            $log.log('posting to service');
-            vm.quiz.ParsedText.Sentence.WORDS = vm.ParsedText;
-            QuizService.createQuiz(vm.quiz);
-            $log.log(vm.quiz);
+        function createQuiz() {
+            $log.log('creating quiz');
+            QuizService.createQuiz(vm.title, vm.open, vm.close, vm.level, vm.parsedText);
         }
 
+        function reload() {
+            vm.parsedText = null;
+        }
         function htmlToPlaintext(text) {
             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
         }

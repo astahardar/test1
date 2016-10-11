@@ -1,0 +1,51 @@
+<div>
+    <div layout="row" layout-align="center center">
+    </div>
+    <div flex layout="row" layout-align="center center" layout-fill>
+        <md-card flex="90" class="tri-wizard-card md-whiteframe-z1 margin-bottom-100" tri-wizard>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                    <h2>{{vm.quiz.Title}}</h2><h2> {{vm.progress}}% <span translate>Búið</span></h2>
+                </div>
+                <md-progress-linear class="md-accent padding-bottom-10" md-mode="determinate" ng-value="{{vm.progress}}"></md-progress-linear>
+            </md-toolbar>
+            <md-card-content>
+                <md-tabs class="md-primary" layout-fill md-selected="triWizard.currentStep" md-dynamic-height>
+                    <md-tab ng-repeat="s in ::vm.Sentences">
+                        <md-tab-body>
+                            <div layout="column" id="Main" layout-align="center">
+                                <md-card id="MainCard" layout-align="center">
+                                    <md-card-content class="overflow-auto">
+                                      <div  layout="row" layout-align="center">
+                                          <div layout="row" layout-xs="column" flex layout-align="center" layout-wrap>
+                                            <p class="md-padding words md-margin">
+                                              <span ng-repeat="w in ::s.WORDS" ng-class="{'currentWord': vm.WordIndex == $index, 'otherWord': vm.WordIndex != $index}">
+                                                  <span ng-style="vm.GetColorForAnswer($index)">{{::w.Word}}
+                                                  </span>
+                                              </span>
+                                            </p>
+                                          </div>
+                                      </div>
+                                      <div flex layout="row" layout-xs="column" ng-class="{'someIndication': vm.IsDone == true}">
+                                          <div flex layout="column" ng-repeat="c in ::vm.WordCatagories | orderBy: 'Title'">
+                                              <md-button class="md-padding md-margin md-raised" palette-background="{{::c.Color}}:100" ng-click="vm.Answer(vm.WordIndex, c.Code)" ng-disabled="vm.IsDone">{{::c.Title}}</md-button>
+                                          </div>
+                                      </div>
+                                        <div flex layout="row" ng-hide="!vm.IsDone" layout-align="center">
+                                            <p>Þú fékkst {{vm.Score}} / {{vm.Words.length}} rétt</p>
+                                        </div>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-primary md-raised" ng-click="vm.getNextSentece(); triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1" ng-disabled="vm.IsQuizDone || !vm.IsDone" translate="Næsta"></md-button>
+                <md-button class="md-accent md-raised" ng-href="#/quizes/overview" ng-click="" ng-show="vm.progress == 100" translate="Skila"></md-button>
+                <md-button class="md-accent md-raised" ng-click="vm.TakeAgain()" ng-show="vm.progress == 100" translate="Taka aftur"></md-button>
+            </md-card-actions>
+        </div>
+    </md-card>
+</div>

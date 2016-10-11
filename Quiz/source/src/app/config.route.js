@@ -3,18 +3,7 @@
 
     angular
         .module('app')
-        .config(routeConfig)
-        .config(provider);
-
-
-    function provider($httpProvider) {
-      //Reset headers to avoid OPTIONS request (aka preflight)
-
-        $httpProvider.defaults.headers.get = {};
-        $httpProvider.defaults.headers.post = {};
-        $httpProvider.defaults.headers.put = {};
-        $httpProvider.defaults.headers.patch = {};
-    }
+        .config(routeConfig);
 
     /* @ngInject */
     function routeConfig($stateProvider, $urlRouterProvider) {

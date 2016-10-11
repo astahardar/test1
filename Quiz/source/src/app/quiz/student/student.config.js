@@ -21,7 +21,7 @@
 
         .state('triangular.quiz-live', {
             url: '/quizes/quiz/:id',
-            templateUrl: 'app/quiz/student/live-quiz/live-quiz.tmpl.html',
+            templateUrl: 'app/quiz/student/live-quiz/live-quiz0.tmpl.html',
             controller: 'LiveQuizController',
             controllerAs: 'vm',
 
@@ -38,17 +38,12 @@
 
         triMenuProvider.addMenu({
             name: 'Student',
-            icon: 'fa fa-tree',
+            icon: '',
             type: 'dropdown',
             priority: 1.1,
             children: [{
                 name: 'Overview',
                 state: 'triangular.overview',
-                type: 'link'
-            },
-            {
-                name: 'Quiz',
-                state: 'triangular.quiz-live',
                 type: 'link'
             }]
         });

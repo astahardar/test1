@@ -14,6 +14,13 @@
                 templateUrl: 'app/quiz/teacher/create-quiz/create-quiz.tmpl.html',
                 controller: 'CreateQuizController',
                 controllerAs: 'vm'
+            })
+
+            .state('triangular.teacher-overview', {
+                url: '/quizes/teacher/overview',
+                templateUrl: 'app/quiz/teacher/overview/overview.tmpl.html',
+                controller: 'TeacherOverviewController',
+                controllerAs: 'vm'
             });
         /*
          $urlRouterProvider.when('/quizes/create/', '/quizes/create/');
@@ -21,12 +28,16 @@
 
         triMenuProvider.addMenu({
             name: 'Teacher',
-            icon: 'fa fa-tree',
+            icon: '',
             type: 'dropdown',
             priority: 1.1,
             children: [{
                 name: 'Create Quiz',
                 state: 'triangular.create-quiz',
+                type: 'link'
+            },{
+                name: 'Overview',
+                state: 'triangular.teacher-overview',
                 type: 'link'
             }]
         });

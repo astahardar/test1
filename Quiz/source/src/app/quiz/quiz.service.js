@@ -15,8 +15,11 @@
             createQuiz: createQuiz,
             parseText: parseText,
             getCategories : getCategories,
-            postAnswer : postAnswer,
-            getCategoryName :getCategoryName,
+            postAnswerWord : postAnswerWord,
+            postAnswerSentence : postAnswerSentence,
+            getCategoryName : getCategoryName,
+            deleteQuiz : deleteQuiz,
+            favorateQuiz : favorateQuiz,
             Projects : [{
                 Id: '0',
                 Title: 'Málfræði 1',
@@ -27,7 +30,7 @@
                 },
                 Level: 'Miðlungs',
                 ParsedText: {
-                    Sentence: {
+                    Sentences: [{
                         WORDS: [{
                             Word: 'Hjólabáturinn',
                             Class: 'n'
@@ -38,7 +41,21 @@
                             Word: 'gulur',
                             Class: 'l'
                         }]
-                    }
+                    }, {
+                        WORDS: [{
+                            Word: 'Sólin',
+                            Class: 'n'
+                        }, {
+                            Word: 'er',
+                            Class: 's'
+                        }, {
+                            Word: 'líka',
+                            Class: 'a'
+                        }, {
+                            Word: 'gul',
+                            Class: 'l'
+                        }]
+                    }]
                 }
             }, {
                 Id: '1',
@@ -50,7 +67,7 @@
                 },
                 Level : 'Auðvelt',
                 ParsedText: {
-                    Sentence: {
+                    Sentences: [{
                         WORDS: [{
                             Word: 'Panda',
                             Class: 'n'
@@ -61,15 +78,40 @@
                             Word: 'löt',
                             Class: 'l'
                         }]
-                    }
+                    }]
                 }
             }]
 
         };
 
-        function postAnswer(quizId, quizLevel, wordInfo, answer) {
+        function postAnswerSentence(quizId, quizLevel, wordCount, score) {
+            var costnerAnswer = {
+                "studentId" : "Gunni",
+                "applicationId" : "46853333359",
+                "applicationName" : "Málfræðileikur",
+                "levelId" : quizLevel,
+                "levelName" : "Málfræðid",
+                "questionId" : Date.now(),
+                "questionTitle" : "Greindu eftir orðflokki",
+                "percentCorrect" : Math.floor((score/wordCount)*100),
+                "questionCount" : wordCount
+            };
+            $log.log(costnerAnswer);
+            var req = {
+                method: 'POST',
+                url: 'https://postman.api.costner.is/collection_answer',
+                data : costnerAnswer,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            return $http(req)
+                .then(function (response) {
+                    $log.log(response.data);
+                });
+        }
 
-
+        function postAnswerWord(quizId, quizLevel, wordInfo, answer) {
             var costnerAnswer = {
                 "studentId" : "Gunni",
                 "applicationId" : "46853333359",
@@ -106,61 +148,35 @@
 
         }
 
-        function createQuiz(quiz) {
-            $log.log('createQuiz');
-            quiz.Id= this.Projects.length;
-            quiz.Creator= 'Kennari Kennaradóttir';
+        function deleteQuiz(id) {
+            this.Projects.splice(id,id);
+        }
+
+        function favorateQuiz(id) {
+            //Todo
+        }
+
+        function createQuiz(title, opens, closes, level, parsedText) {
+            var quiz = {
+                Id : this.Projects.length,
+                Title : title,
+                Creator: 'Kennari Kennarason', //getUser
+                Open : {
+                    From: opens,
+                    Till : closes
+                },
+                Level : level,
+                ParsedText : parsedText
+            };
+
             this.Projects.push(quiz);
         }
 
         function parseText(unparsedText) {
-            /*
-            var req = {
-                method: 'GET',
-                url: 'http://nlp.cs.ru.is/IceNLPWebService/',
-                qs:
-               { mode: 'icenlp',
-                 parsing: 'true',
-                 query: 'Testing%20test'
-                },
-                headers: {
-
-                    /*
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, HEAD, POST, TRACE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type'
-                }
-            };*/
-
-            var unparsedText = unparsedText.split(" ");
-            var WORDS = [{
-                Word: unparsedText[0],
-                Class: 'l'
-            },{
-                Word: unparsedText[1],
-                Class: 'n'
-            },{
-                Word: unparsedText[2],
-                Class: 's'
-            },{
-                Word: unparsedText[3],
-                Class: 'a'
-            },{
-                Word: unparsedText[4],
-                Class: 'c'
-            },{
-                Word: unparsedText[5],
-                Class: 'l'
-            }];
-
-            return WORDS;
-             /*
-            $http(req).then(function (response) {
-                return response.data;
-            }, function (response) {
-                $log.log(response);
-            }); */
-
+            return $http.post('http://localhost:8080/icenlp/IceNLPServlet/process/?mode=icenlp&parsing=true&tokenize=true&query='+ unparsedText + '&output=json' )
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function getCategories() {
@@ -171,7 +187,7 @@
             },{
                 Title : 'Lýsingarorð',
                 Code :  'l',
-                Color : 'red'
+                Color : 'blue'
             },{
                 Title : 'Fornafn',
                 Code :  'f',
@@ -183,7 +199,7 @@
             },{
                 Title : 'Töluorð',
                 Code :  't',
-                Color : 'blue'
+                Color : 'red'
             },{
                 Title : 'Sagnorð',
                 Code :  's',

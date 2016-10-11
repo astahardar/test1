@@ -1,0 +1,10 @@
+<div  layout="row" layout-align="center">
+    <div layout="row" layout-xs="column" flex layout-align="center" layout-wrap>
+      <p class="md-padding words md-margin">
+        <span ng-repeat="w in ::vm.Words" ng-class="{'currentWord': vm.WordIndex == $index, 'otherWord': vm.WordIndex != $index}">
+            <span ng-style="vm.GetColorForAnswer($index)">{{::w.Word}}
+            </span>
+        </span>
+      </p>
+    </div>
+</div>

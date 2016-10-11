@@ -20,7 +20,7 @@
                                     <div>
                                         <md-input-container class="md-block">
                                             <label translate>Nafn</label>
-                                            <input name="text" ng-model="vm.quiz.Title" required>
+                                            <input name="text" ng-model="vm.title" required>
                                             <div ng-messages="" md-auto-hide="false" ng-show="">
                                                 <div ng-message when="required">
                                                     <span translate>This field is required</span>
@@ -29,16 +29,16 @@
                                         </md-input-container>
                                         <div>
                                             <div  layout layout-xs="row" flex>
-                                                <md-datepicker ng-model="vm.quiz.Open.From" md-placeholder="Próf opnar"></md-datepicker>
+                                                <md-datepicker ng-model="vm.open" md-placeholder="Próf opnar"></md-datepicker>
                                             </div>
                                             <div lass="labelCenter" layout layout-xs="row" flex>
-                                                <md-datepicker ng-model="vm.quiz.Open.Till" md-placeholder="Próf lokar"></md-datepicker>
+                                                <md-datepicker ng-model="vm.close" md-placeholder="Próf lokar"></md-datepicker>
                                             </div>
 
                                         </div>
                                         <div layout layout-xs="row" flex>
 
-                                            <md-select ng-model="vm.quiz.Level" placeholder="Veldu erfileikastig">
+                                            <md-select ng-model="vm.level" placeholder="Veldu erfileikastig">
                                                 <md-option value="Auðvelt">Auðvelt</md-option>
                                                 <md-option value="Miðlungs">Miðlungs</md-option>
                                                 <md-option value="Erfitt">Erfitt</md-option>
@@ -46,7 +46,7 @@
                                         </div>
                                         <md-input-container class="md-block textbox">
                                             <label translate>Setningar til prófs</label>
-                                            <text-angular name="" ng-model="vm.quiz.UnparsedText" ta-target-toolbars="editor-toolbar" ta-paste="converter($html)" required></text-angular>
+                                            <text-angular name="" ng-model="vm.unparsedText" ta-target-toolbars="editor-toolbar" ta-paste="converter($html)" required></text-angular>
                                             <div ng-messages="" md-auto-hide="false" ng-show="">
                                                 <div ng-message when="required">
                                                     <span translate>This field is required</span>
@@ -68,11 +68,13 @@
                         <md-tab-body>
                             <md-content class="md-padding">
                                 <form name="addressForm" tri-wizard-form>
-                                    <div class="create-quiz-wordAndCategory" ng-repeat="w in ::vm.ParsedText" layout="column">
-                                        <p class="create-quiz-words">{{::w.Word}}</p>
-                                        <md-select class="create-quiz-wordCategories" ng-model ="::w.Class">
-                                          <md-option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</md-option>
-                                        </md-select>
+                                    <div class="create-quiz-wordAndCategory" ng-repeat="s in ::vm.parsedText.Sentences" ng-model ="::vm.parsedText" layout="column">
+                                        <div class="create-quiz-wordAndCategory" ng-repeat="w in ::s.WORDS" layout="column">
+                                            <p class="create-quiz-words">{{::w.Word}}</p>
+                                            <md-select class="create-quiz-wordCategories" ng-model ="::w.Class">
+                                                <md-option ng-repeat="c in ::vm.WordCatagories" value="{{::c.Code}}">{{::c.Title}}</md-option>
+                                            </md-select>
+                                        </div>
                                     </div>
                                 </form>
                             </md-content>
@@ -96,9 +98,9 @@
                 </md-tabs>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="" ng-disabled="triWizard.prevStepDisabled()" translate="Til baka"></md-button>
+                <md-button class="md-primary md-raised" ng-click="triWizard.prevStep(); vm.reload()" ng-hide="" ng-disabled="triWizard.prevStepDisabled()" translate="Til baka"></md-button>
                 <md-button class="md-primary md-raised" ng-click="vm.parseText(); triWizard.nextStep()" ng-hide="!triWizard.prevStepDisabled()" translate="Greina"></md-button>
-                <md-button class="md-accent md-raised" ng-click="vm.postQuiz(); triWizard.nextStep()" ng-show="!triWizard.prevStepDisabled()" translate="Birta verkefni"></md-button>
+                <md-button class="md-accent md-raised" ng-href="#/quizes/teacher/overview" ng-click="vm.createQuiz(); triWizard.nextStep()" ng-show="!triWizard.prevStepDisabled()" translate="Birta verkefni"></md-button>
             </md-card-actions>
     </div>
     </md-card>
