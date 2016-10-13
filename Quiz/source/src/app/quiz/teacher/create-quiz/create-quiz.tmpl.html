@@ -68,7 +68,7 @@
                         <md-tab-body>
                             <md-content class="md-padding">
                                 <form name="addressForm" tri-wizard-form>
-                                    <div class="create-quiz-wordAndCategory" ng-repeat="s in ::vm.parsedText.Sentences" ng-model ="::vm.parsedText" layout="column">
+                                    <div class="create-quiz-wordAndCategory" ng-repeat="s in vm.parsedText.Sentences" ng-model ="::vm.parsedText" layout="column">
                                         <div class="create-quiz-wordAndCategory" ng-repeat="w in ::s.WORDS" layout="column">
                                             <p class="create-quiz-words">{{::w.Word}}</p>
                                             <md-select class="create-quiz-wordCategories" ng-model ="::w.Class">

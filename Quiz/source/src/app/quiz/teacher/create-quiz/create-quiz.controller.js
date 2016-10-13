@@ -25,8 +25,7 @@
             $log.log(vm.unparsedText);
             QuizService.parseText(htmlToPlaintext(vm.unparsedText))
                 .then(function (response){
-                    vm.parsedText = angular.copy(response.ParsedText);
-                    //vm.parsedText = response.ParsedText;
+                    vm.parsedText = response.ParsedText;
                     $log.log(vm.parsedText);
                 }, function (error) {
                     $log.log(error);
