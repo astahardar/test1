@@ -28,7 +28,7 @@
 
         triMenuProvider.addMenu({
             name: 'Teacher',
-            icon: '',
+            icon: 'zmdi zmdi-assignment-o',
             type: 'dropdown',
             priority: 1.1,
             children: [{

@@ -38,7 +38,7 @@
 
         triMenuProvider.addMenu({
             name: 'Student',
-            icon: '',
+            icon: 'zmdi zmdi-border-color',
             type: 'dropdown',
             priority: 1.1,
             children: [{
